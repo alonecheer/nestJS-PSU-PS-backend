@@ -20,8 +20,8 @@ export class UsersService {
       },
       {
         userId: 3,
-        username: 'maria',
-        password: 'guess',
+        username: 'test',
+        password: '123',
       },
     ];
   }
