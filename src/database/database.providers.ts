@@ -1,6 +1,6 @@
 
 import { Sequelize } from 'sequelize-typescript';
-import { Foo } from '../foo/foo.entity';
+
 
 export const databaseProviders = [
   {
@@ -11,10 +11,10 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '1234',
-        database: 'psucoin',
+        password: '0123456',
+        database: 'test',
       });
-      sequelize.addModels([Foo]);
+      sequelize.addModels([]);
       await sequelize.sync();
       return sequelize;
     },
