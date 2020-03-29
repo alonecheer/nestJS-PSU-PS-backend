@@ -11,6 +11,10 @@ export class UserloginpsuService {
         return this.userpsuRepository.findAll<Userpsu>();
     }
 
+    getHello(): string {
+        return 'Hello World! userloginpsuService';
+      }
+
     login(CreateUserDto: CreateUserDto){
         const PSU_URL = 'https://passport.psu.ac.th/authentication/authentication.asmx?wsdl';
         return new Promise((resolve, reject) => {
