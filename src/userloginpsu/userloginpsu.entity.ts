@@ -5,7 +5,6 @@ import {AllowNull,Column,Model,PrimaryKey,Table,AutoIncrement,} from 'sequelize-
 })
 export class Userpsu extends Model<Userpsu> {
     @PrimaryKey
-    @AutoIncrement
     @Column
     username: string;
 
