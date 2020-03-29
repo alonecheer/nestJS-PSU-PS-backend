@@ -15,23 +15,23 @@ export class UserloginpsuService {
         return 'Hello World! userloginpsuService';
       }
 
-    login(CreateUserDto: CreateUserDto){
+    login(CreateUserDto: CreateUserDto) {
         const PSU_URL = 'https://passport.psu.ac.th/authentication/authentication.asmx?wsdl';
         return new Promise((resolve, reject) => {
             soap.createClient(PSU_URL, (err, client) => {
-              if (err) return reject(err);
-      
-              let user = {
-                username: CreateUserDto.username,
-                password: CreateUserDto.password
-              }
-      
-              client.GetStaffDetails(user, (err, response) => {
                 if (err) return reject(err);
-                else
-                  return resolve(response.GetStaffDetailsResult.string);
-              })
+
+                let user = {
+                    username: CreateUserDto.username,
+                    password: CreateUserDto.password
+                }
+
+                client.GetStaffDetails(user, (err, response) => {
+                    if (err) return reject(err);
+                    else
+                        return resolve(response.GetStaffDetailsResult.string);
+                })
             })
-          })
+        })
     }
 }
