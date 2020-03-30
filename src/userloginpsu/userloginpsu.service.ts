@@ -7,7 +7,7 @@ export class UserloginpsuService {
     constructor(
         @Inject('Userpsu_REPOSITORY') private userpsu: typeof Userpsu) {}
 
-    async findAll(): Promise<Userpsu[]>{
+    async getAlluser(): Promise<Userpsu[]>{
         return this.userpsu.findAll<Userpsu>();
     }
 
@@ -44,4 +44,5 @@ export class UserloginpsuService {
         profile.cid = result[3];
         return this.userpsu.create(profile.toJSON())
     }
+
 }

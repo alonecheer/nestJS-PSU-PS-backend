@@ -6,9 +6,9 @@ import { CreateUserDto } from './dto/create-user.dto';
 export class UserloginpsuController {
     constructor(private userloginpsu: UserloginpsuService){}
 
-    @Get()
-    getHello(): string {
-      return this.userloginpsu.getHello();
+    @Get('/')
+    getAlluser() {
+      return this.userloginpsu.getAlluser()
     }
 
     @Post('/login')
