@@ -4,11 +4,17 @@ import {AllowNull,Column,Model,PrimaryKey,Table,AutoIncrement,} from 'sequelize-
     paranoid: true,
 })
 export class Userpsu extends Model<Userpsu> {
-    @PrimaryKey
-    @Column
-    username: string;
+  @PrimaryKey
+  @Column
+  sid: string;
 
-    @Column
-    password: string;
+  @Column
+  firstname: string;
+
+  @Column
+  lastname: string;
+
+  @Column
+  cid: string;
 
 }

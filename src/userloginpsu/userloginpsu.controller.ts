@@ -13,6 +13,6 @@ export class UserloginpsuController {
 
     @Post('/login')
     login(@Body() CreateUserDto: CreateUserDto){
-        return this.userloginpsu.login(CreateUserDto);
+      return this.userloginpsu.login(CreateUserDto)
     }
 }
