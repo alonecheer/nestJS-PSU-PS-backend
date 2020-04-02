@@ -50,9 +50,12 @@ export class UserloginpsuService {
         profile.firstname = result[1];
         profile.lastname = result[2];
         profile.cid = result[3];
-        return this.userpsu.create(profile.toJSON())
+        const checkuser = await this.getUserBysid(result[0]);
+        if(checkuser){
+            return `Already has information ${result[0]}`
+        }
+        else
+            return this.userpsu.create(profile.toJSON())
     }
-
-
 
 }
