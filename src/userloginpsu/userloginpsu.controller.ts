@@ -1,4 +1,4 @@
-import { Controller, Post, Body , Get } from '@nestjs/common';
+import { Controller, Post, Body , Get, Param } from '@nestjs/common';
 import { UserloginpsuService } from './userloginpsu.service';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -9,6 +9,11 @@ export class UserloginpsuController {
     @Get('/')
     getAlluser() {
       return this.userloginpsu.getAlluser()
+    }
+
+    @Get('/:sid')
+    getUserBysid(@Param('sid') sid: string){
+      return this.userloginpsu.getUserBysid(sid);
     }
 
     @Post('/login')

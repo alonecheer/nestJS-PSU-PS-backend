@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { Userpsu } from './userloginpsu.entity';
 import * as soap from 'soap';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -9,6 +9,14 @@ export class UserloginpsuService {
 
     async getAlluser(): Promise<Userpsu[]>{
         return this.userpsu.findAll<Userpsu>();
+    }
+
+    async getUserBysid(sid: string){
+        const result = await this.userpsu.findByPk(sid);
+        if(!result){
+            throw new NotFoundException(`User with sid "${sid}" not found`)
+        }
+        return result;
     }
 
     getHello(): string {
@@ -28,7 +36,7 @@ export class UserloginpsuService {
 
                 client.GetStaffDetails(user, (err, response) => {
                     if (err) return reject(err);
-                    else
+                    else 
                         return resolve(response.GetStaffDetailsResult.string);
                 })
             })
@@ -44,5 +52,7 @@ export class UserloginpsuService {
         profile.cid = result[3];
         return this.userpsu.create(profile.toJSON())
     }
+
+
 
 }
