@@ -1,10 +1,13 @@
-import { Controller, Post, Body , Get, Param } from '@nestjs/common';
+import { Controller, Post, Body , Get, Param ,UseGuards,Request} from '@nestjs/common';
 import { UserloginpsuService } from './userloginpsu.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { AuthService } from 'src/auth/auth.service';
+import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 
 @Controller('userloginpsu')
 export class UserloginpsuController {
-    constructor(private userloginpsu: UserloginpsuService){}
+    constructor(private userloginpsu: UserloginpsuService,
+                private authService: AuthService){}
 
     @Get('/')
     getAlluser() {
@@ -16,8 +19,9 @@ export class UserloginpsuController {
       return this.userloginpsu.getUserBysid(sid);
     }
 
+    @UseGuards(LocalAuthGuard)
     @Post('/login')
-    login(@Body() CreateUserDto: CreateUserDto){
-      return this.userloginpsu.login(CreateUserDto)
+    login(@Request() req){
+      return this.authService.loginpsu(req.sid)
     }
 }
