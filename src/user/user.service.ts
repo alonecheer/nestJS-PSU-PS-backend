@@ -6,11 +6,19 @@ import * as bcrypt from 'bcrypt';
 export class UserService {
     constructor(
         @Inject('User_REPOSITORY') private user: typeof  User) {}
+
+    async findAll(): Promise<User[]> {
+        return this.user.findAll<User>();
+    }
+
     async siginIn(username: string, password: string) {
+        console.log('username Service : ',username)
+        
         const result = await this.loginPSUPassport(username, password);
+        console.log('password Service : ',password)
         const profile = new User();
         profile.sid = result[0];
-        profile.password = await bcrypt.hash(password, 10);
+        profile.password = profile.password;
         profile.firstname = result[1];
         profile.lastname = result[2];
         profile.cid = result[3];
