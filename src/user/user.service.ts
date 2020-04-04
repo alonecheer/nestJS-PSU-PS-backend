@@ -5,8 +5,7 @@ import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UserService {
     constructor(
-        @Inject('User_REPOSITORY') private user: User) {}
-    
+        @Inject('User_REPOSITORY') private user: typeof  User) {}
     async siginIn(username: string, password: string) {
         const result = await this.loginPSUPassport(username, password);
         const profile = new User();
