@@ -6,8 +6,8 @@ import { SinginUser } from './dto/singin-user.dto';
 export class UserController {
     constructor(private userService: UserService,) {}
     @Get('/')
-    test(){
-        return 'test'
+    findAll(){
+        return this.userService.findAll();
     }
     
     @Get('/:sid')
