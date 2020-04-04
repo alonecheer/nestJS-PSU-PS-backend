@@ -1,9 +1,10 @@
 import { Controller, Post, Body , Get, Param ,UseGuards,Request} from '@nestjs/common';
 import { UserService } from './user.service';
+import { SinginUser } from './dto/singin-user.dto';
 
 @Controller('users')
 export class UserController {
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService,) {}
     @Get('/')
     test(){
         return 'test'
@@ -16,8 +17,7 @@ export class UserController {
 
     
     @Post('/signin')
-    signIn(@Body() username: string, password: string) {
-        console.log('singin Controller')
-        return  this.userService.siginIn(username,password);
+    signIn(@Body() singinUser:  SinginUser) {
+        return this.userService.siginIn(singinUser)
     }
 }

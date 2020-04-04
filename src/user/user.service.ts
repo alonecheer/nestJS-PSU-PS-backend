@@ -2,6 +2,8 @@ import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { User } from './user.entity';
 import * as soap from 'soap';
 import * as bcrypt from 'bcrypt';
+var sha256 = require('sha256')
+import { SinginUser } from './dto/singin-user.dto';
 @Injectable()
 export class UserService {
     constructor(
@@ -11,14 +13,14 @@ export class UserService {
         return this.user.findAll<User>();
     }
 
-    async siginIn(username: string, password: string) {
-        console.log('username Service : ',username)
-        
-        const result = await this.loginPSUPassport(username, password);
-        console.log('password Service : ',password)
+    async siginIn(singinUser:  SinginUser) {
+        // console.log('username Service : ',username)
+        // console.log('password Service : ',password)
+        const result = await this.loginPSUPassport(singinUser);
+        console.log('resule', result)
         const profile = new User();
         profile.sid = result[0];
-        profile.password = profile.password;
+        profile.password = await bcrypt.hash(singinUser.password, 10);
         profile.firstname = result[1];
         profile.lastname = result[2];
         profile.cid = result[3];
@@ -29,15 +31,15 @@ export class UserService {
             return this.user.create(profile.toJSON())
         }
     }
-    async  loginPSUPassport(psuPassport, password) {
+    async  loginPSUPassport(singinUser:  SinginUser) {
         const PSU_URL = 'https://passport.psu.ac.th/authentication/authentication.asmx?wsdl';
         return new Promise((resolve, reject) => {
             soap.createClient(PSU_URL, (err, client) => {
                 if (err) return reject(err);
 
                 let user = {
-                    username: psuPassport,
-                    password: password
+                    username: singinUser.username,
+                    password: singinUser.password
                 }
 
                 client.GetStaffDetails(user, (err, response) => {
