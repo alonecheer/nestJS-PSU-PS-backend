@@ -13,6 +13,8 @@ export class UserService {
         return this.user.findAll<User>();
     }
 
+
+
     async siginIn(singinUser:  SinginUser) {
         // console.log('username Service : ',username)
         // console.log('password Service : ',password)
@@ -55,6 +57,19 @@ export class UserService {
         if (!found) {
             return 0;
         }
-        return found.toJSON();
-    }    
+        return found;
+    }   
+    
+    async getPassBySid(sid: string){
+        const found = await this.user.findAll({
+            attributes: ['password'],
+            where: {
+                sid: sid
+            }
+        });
+        if (!found) {
+            return 0;
+        }
+        return found[0].toJSON();
+    }
 }
