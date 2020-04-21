@@ -63,5 +63,16 @@ export class UsersService {
         })
     }
 
-    
+    async getPasswordBysid(sid: string) {
+        const found = await this.user.findAll({
+            attributes: ['password'],
+            where: {
+                sid: sid
+            }
+        });
+        if (!found) {
+            return 0;
+        }
+        return found[0].toJSON();
+    }
 }
