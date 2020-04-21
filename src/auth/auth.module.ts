@@ -4,6 +4,8 @@ import { UsersModule } from 'src/users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
+import { LocalStrategy } from './local.strategy';
+import { JwtStrategy } from './jwt.strategy';
 @Module({
   imports:[UsersModule,PassportModule,
     JwtModule.register({
@@ -12,6 +14,6 @@ import { jwtConstants } from './constants';
     }),
   UsersModule
   ],
-  providers: [AuthService,]
+  providers: [AuthService,LocalStrategy,JwtStrategy]
 })
 export class AuthModule {}
