@@ -1,11 +1,15 @@
-import { Injectable , Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { User } from './entity/users.entity';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, CreateUserDetailDto } from './dto/create-user.dto';
 import * as soap from 'soap';
+import * as bcrypt from 'bcrypt';
 var sha256 = require('sha256')
+
 @Injectable()
 export class UsersService {
-    constructor(@Inject('USERS_REPOSITORY')private user : typeof User){}
+    constructor(@Inject('USERS_REPOSITORY') private user
+        : typeof User) { }
+
 
     async findAll(): Promise<User[]> {
         const user = await this.user.findAll<User>();
@@ -18,6 +22,39 @@ export class UsersService {
             return 0;
         }
         return found;
+    }
+
+    async getPasswordBysid(sid: string) {
+        const found = await this.user.findAll({
+            attributes: ['password'],
+            where: {
+                sid: sid
+            }
+        });
+        if (!found) {
+            return 0;
+        }
+        return found[0].toJSON();
+    }
+
+    async  loginPSUPassport(psuPassport, password) {
+        const PSU_URL = 'https://passport.psu.ac.th/authentication/authentication.asmx?wsdl';
+        return new Promise((resolve, reject) => {
+            soap.createClient(PSU_URL, (err, client) => {
+                if (err) return reject(err);
+
+                let user = {
+                    username: psuPassport,
+                    password: password
+                }
+
+                client.GetStaffDetails(user, (err, response) => {
+                    if (err) return reject(err);
+                    else
+                        return resolve(response.GetStaffDetailsResult.string);
+                })
+            })
+        })
     }
 
     async siginIn(CreateUserDto: CreateUserDto) {
@@ -43,36 +80,5 @@ export class UsersService {
 
     }
 
-    async  loginPSUPassport(psuPassport, password) {
-        const PSU_URL = 'https://passport.psu.ac.th/authentication/authentication.asmx?wsdl';
-        return new Promise((resolve, reject) => {
-            soap.createClient(PSU_URL, (err, client) => {
-                if (err) return reject(err);
-
-                let user = {
-                    username: psuPassport,
-                    password: password
-                }
-
-                client.GetStaffDetails(user, (err, response) => {
-                    if (err) return reject(err);
-                    else
-                        return resolve(response.GetStaffDetailsResult.string);
-                })
-            })
-        })
-    }
-
-    async getPasswordBysid(sid: string) {
-        const found = await this.user.findAll({
-            attributes: ['password'],
-            where: {
-                sid: sid
-            }
-        });
-        if (!found) {
-            return 0;
-        }
-        return found[0].toJSON();
-    }
 }
+
