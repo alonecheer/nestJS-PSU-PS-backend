@@ -1,7 +1,7 @@
 
 import { Sequelize } from 'sequelize-typescript';
-import { Form001 } from 'src/form001/model/form001.model';
 import { User } from 'src/users/entity/users.entity';
+import { Form001 } from 'src/form001/entity/forms.entity';
 
 
 

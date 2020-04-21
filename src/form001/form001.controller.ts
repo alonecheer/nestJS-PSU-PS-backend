@@ -26,7 +26,12 @@ export class Form001Controller {
         return res.status(status).json(response);
     }
 
-    @Post()
+    @Get('/test')
+    getAllUser() {
+        return 'form001'
+    }
+
+    @Post('/insert')
     async addForm001(@Body('form001') data, @Res() res){
         let status = HttpStatus.OK;
         let response = {};
@@ -36,4 +41,5 @@ export class Form001Controller {
         response = { form001 };
         return res.status(status).json(response); 
     }
+
 }
