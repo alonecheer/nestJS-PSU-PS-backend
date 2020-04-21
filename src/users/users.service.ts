@@ -9,5 +9,14 @@ export class UsersService {
         const user = await this.user.findAll<User>();
         return user;
     }
+
+    async getUserBySid(sid: string) {
+        const found = await this.user.findByPk(sid);
+        if (!found) {
+            return 0;
+        }
+        return found;
+    }
+
     
 }
