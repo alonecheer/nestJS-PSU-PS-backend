@@ -4,7 +4,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 export class UsersController {
-    constructor(private usersService: UsersService){}
+    constructor(private usersService: UsersService,
+                ){}
 
     @Get('/')
     getAllUser() {
@@ -20,4 +21,6 @@ export class UsersController {
     signIn(@Body() CreateUserDto:CreateUserDto) {
         return this.usersService.siginIn(CreateUserDto);
     }
+
+    
 }
