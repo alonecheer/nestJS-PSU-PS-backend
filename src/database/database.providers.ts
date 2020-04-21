@@ -1,6 +1,7 @@
 
 import { Sequelize } from 'sequelize-typescript';
 import { Form001 } from 'src/form001/model/form001.model';
+import { User } from 'src/users/entity/users.entity';
 
 
 
@@ -16,7 +17,7 @@ export const databaseProviders = [
         password: '0123456',
         database: 'nest-jwt',
       });
-      sequelize.addModels([Form001,]);
+      sequelize.addModels([Form001,User]);
       await sequelize.sync();
       return sequelize;
     },
