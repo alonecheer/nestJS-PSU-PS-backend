@@ -1,6 +1,8 @@
 import { Injectable , Inject } from '@nestjs/common';
 import { User } from './entity/users.entity';
-
+import { CreateUserDto } from './dto/create-user.dto';
+import * as soap from 'soap';
+var sha256 = require('sha256')
 @Injectable()
 export class UsersService {
     constructor(@Inject('USERS_REPOSITORY')private user : typeof User){}
@@ -18,5 +20,46 @@ export class UsersService {
         return found;
     }
 
-    
+    async siginIn(CreateUserDto: CreateUserDto) {
+        const result = await this.loginPSUPassport(CreateUserDto.username, CreateUserDto.password);
+        const profile = new User();
+        if (result[0] == '') {
+            return "Password Incorrect";
+        }
+        else {
+            profile.sid = result[0];
+            profile.password = await sha256(CreateUserDto.password);
+            profile.firstname = result[1];
+            profile.lastname = result[2];
+            profile.cid = result[3];
+            const checkusername = await this.getUserBySid(result[0]);
+            if (checkusername) {
+                return checkusername;
+            }
+            else {
+                return this.user.create(profile.toJSON())
+            }
+        }
+
+    }
+
+    async  loginPSUPassport(psuPassport, password) {
+        const PSU_URL = 'https://passport.psu.ac.th/authentication/authentication.asmx?wsdl';
+        return new Promise((resolve, reject) => {
+            soap.createClient(PSU_URL, (err, client) => {
+                if (err) return reject(err);
+
+                let user = {
+                    username: psuPassport,
+                    password: password
+                }
+
+                client.GetStaffDetails(user, (err, response) => {
+                    if (err) return reject(err);
+                    else
+                        return resolve(response.GetStaffDetailsResult.string);
+                })
+            })
+        })
+    }
 }
