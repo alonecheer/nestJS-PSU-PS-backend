@@ -9,5 +9,10 @@ export class UsersController {
     getAllUser() {
         return this.usersService.findAll();
     }
+
+    @Get('/:sid')
+    getUserBySid(@Param('sid') sid: string) {
+        return this.usersService.getUserBySid(sid);
+    }
     
 }
