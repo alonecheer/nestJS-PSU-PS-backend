@@ -1,5 +1,6 @@
 import { Injectable,Inject } from '@nestjs/common';
 import { Form001 } from './entity/forms.entity';
+import { InsertFormDto } from './dto/forms.dto';
 
 
 @Injectable()
@@ -15,4 +16,7 @@ export class Form001Service {
         return await this.form001.create(form001);
     }
 
+    async insertForm001(insertForm001:InsertFormDto){
+        return await this.form001.create(insertForm001);
+    }
 }

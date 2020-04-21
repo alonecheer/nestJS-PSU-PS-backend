@@ -1,5 +1,4 @@
-import { Form001 } from "./model/form001.model";
-
+import { Form001 } from "./entity/forms.entity";
 
 export const Form001Providers = [
   {

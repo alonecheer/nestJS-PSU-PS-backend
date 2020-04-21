@@ -10,6 +10,7 @@ import {
     Patch,
   } from '@nestjs/common';
 import { Form001Service } from './form001.service';
+import { InsertFormDto } from './dto/forms.dto';
 
 @Controller('form001')
 export class Form001Controller {
@@ -31,7 +32,7 @@ export class Form001Controller {
         return 'form001'
     }
 
-    @Post('/insert')
+    @Post()
     async addForm001(@Body('form001') data, @Res() res){
         let status = HttpStatus.OK;
         let response = {};
@@ -42,5 +43,9 @@ export class Form001Controller {
         return res.status(status).json(response); 
     }
 
+    @Post('/insert')
+    async insertForm001(@Body() InsertFormDto:InsertFormDto ){
+      return  this.form001Service.insertForm001(InsertFormDto);
+    }
     
 }

@@ -1,4 +1,4 @@
 export class InsertFormDto{
-    location:string;
+    loca:number;
     date:string;
 }
