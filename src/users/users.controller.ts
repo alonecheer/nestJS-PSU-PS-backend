@@ -1,5 +1,6 @@
 import { Controller, Request, Post, UseGuards, Body, Get, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -15,4 +16,8 @@ export class UsersController {
         return this.usersService.getUserBySid(sid);
     }
     
+    @Post('/signin')
+    signIn(@Body() CreateUserDto:CreateUserDto) {
+        return this.usersService.siginIn(CreateUserDto);
+    }
 }
