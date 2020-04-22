@@ -15,7 +15,10 @@ export class Form001 extends Model<Form001> {
     @PrimaryKey
     @AutoIncrement
     @Column
-    loca: number;
+    order_id: number
+    
+    @Column
+    loca: string;
 
 
     @Column
