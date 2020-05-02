@@ -1,4 +1,6 @@
-import { Table, Column, Model, PrimaryKey,AutoIncrement } from 'sequelize-typescript';
+import { Table, Column, Model, PrimaryKey,AutoIncrement,HasMany,ForeignKey  } from 'sequelize-typescript';
+import { Form001 } from 'src/form001/entity/forms.entity';
+
 
 @Table({})
 export class User extends Model<User> {
@@ -20,3 +22,4 @@ export class User extends Model<User> {
   cid: string;
   
 }
+

@@ -15,8 +15,8 @@ export class UsersController {
     getAllUser() {
         return this.usersService.findAll();
     }
-    
-    @UseGuards(JwtAuthGuard)
+
+    //@UseGuards(JwtAuthGuard)
     @Get('/:sid')
     getUserBySid(@Param('sid') sid: string) {
         return this.usersService.getUserBySid(sid);

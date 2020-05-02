@@ -5,7 +5,10 @@ import {
     PrimaryKey,
     Table,
     AutoIncrement,
+    HasMany,
+    ForeignKey
 } from 'sequelize-typescript';
+import { User } from 'src/users/entity/users.entity';
 
 @Table({
     timestamps: false,
@@ -24,7 +27,8 @@ export class Form001 extends Model<Form001> {
     @Column
     date: string;
 
-
-
-
+    @ForeignKey(() => User)
+    @Column
+    sid: string;
+   
 }
