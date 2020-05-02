@@ -6,7 +6,8 @@ import {
     Table,
     AutoIncrement,
     HasMany,
-    ForeignKey
+    ForeignKey,
+    BelongsTo
 } from 'sequelize-typescript';
 import { User } from 'src/users/entity/users.entity';
 
@@ -27,6 +28,10 @@ export class Form001 extends Model<Form001> {
     @Column
     date: string;
 
+    @BelongsTo(()=> User)
+    user:User;
+
+    @AllowNull(false)
     @ForeignKey(() => User)
     @Column
     sid: string;

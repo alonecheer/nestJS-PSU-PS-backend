@@ -32,19 +32,10 @@ export class Form001Controller {
         return 'form001'
     }
 
-    @Post()
-    async addForm001(@Body('form001') data, @Res() res){
-        let status = HttpStatus.OK;
-        let response = {};
-        console.log("before"+data)
-        const form001 = await this.form001Service.addForm001(data);
-        console.log("after"+data)
-        response = { form001 };
-        return res.status(status).json(response); 
-    }
 
     @Post('/insert')
     async insertForm001(@Body() InsertFormDto:InsertFormDto ){
+        console.log('xxx',InsertFormDto)
       return  this.form001Service.insertForm001(InsertFormDto);
     }
     

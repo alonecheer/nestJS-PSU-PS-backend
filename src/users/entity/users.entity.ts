@@ -1,4 +1,4 @@
-import { Table, Column, Model, PrimaryKey,AutoIncrement,HasMany,ForeignKey  } from 'sequelize-typescript';
+import { Table, Column, Model, PrimaryKey,AutoIncrement,HasMany,ForeignKey ,HasOne } from 'sequelize-typescript';
 import { Form001 } from 'src/form001/entity/forms.entity';
 
 
@@ -20,6 +20,9 @@ export class User extends Model<User> {
 
   @Column
   cid: string;
+
+  @HasOne(()=>Form001)
+  form001: Form001;
   
 }
 
