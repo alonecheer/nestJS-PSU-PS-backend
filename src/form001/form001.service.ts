@@ -14,4 +14,18 @@ export class Form001Service {
     async insertForm001(insertForm001:InsertFormDto){
         return await this.form001.create(insertForm001);
     }
+
+    async getForm001Bysid(sid : string){
+        const found = await this.form001.findAll({
+            attributes: ['sid','loca','date'],
+            where: {
+                sid: sid
+            }
+        })
+        console.log('found = xxxxxxxxxxxxxx',found)
+        if (!found){
+            return 0;
+        }
+        return found;
+    }
 }

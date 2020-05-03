@@ -39,4 +39,8 @@ export class Form001Controller {
       return  this.form001Service.insertForm001(InsertFormDto);
     }
     
+    @Get('/:sid')
+    getForm001Bysid(@Param('sid') sid:string){
+      return this.form001Service.getForm001Bysid(sid)
+    }
 }
