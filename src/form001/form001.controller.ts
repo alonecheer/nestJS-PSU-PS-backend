@@ -46,10 +46,10 @@ export class Form001Controller {
     }
 
 
-    @Delete(':o_orderid')
-    async deletehistory(@Param('o_orderid') o_orderid : number){
+    @Delete(':order_id')
+    async deletehistory(@Param('order_id') order_id : number){
       let response = {};
-      const history = await this.form001Service.deletehistory(o_orderid);
+      const history = await this.form001Service.deletehistory(order_id);
       if (history === false){
         response ={
           message: 'ไม่พบข้อมูล'
@@ -59,6 +59,21 @@ export class Form001Controller {
         response ={
           message: 'ลบช้อมูลเรียบร้อยแล้ว'
         };
+      }
+      return response
+    }
+
+    @Patch(':order_id')
+    async updatehistory(@Param('order_id') order_id: number,@Body() InsertFormDto:InsertFormDto  ){
+      const form001 = await this.form001Service.updatehistory(order_id,InsertFormDto);
+      let response = {};
+      if (form001 === false){
+        response ={
+          message: 'ไม่พบข้อมูล'
+        };
+      }
+      else {
+        response ={ form001 };
       }
       return response
     }
