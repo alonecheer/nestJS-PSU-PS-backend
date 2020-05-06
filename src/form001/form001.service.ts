@@ -37,4 +37,12 @@ export class Form001Service {
         }
         return found;
     }
+
+    async deletehistory(o_orderid: number){
+        const data = await this.form001.findByPk(o_orderid);
+        if(data) {
+            return await data.destroy();
+        }
+        return false;
+    }
 }
