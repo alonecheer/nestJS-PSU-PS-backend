@@ -37,6 +37,15 @@ export class Form001Service {
         }
         return found;
     }
+    async getForm001Byorder_id(order_id : number){
+        const data = await this.form001.findByPk(order_id);
+        if(data){
+            console.log('Data : ',data)
+        return data; 
+        }
+        return console.log('not data')
+       
+    }
 
     async deletehistory(o_orderid: number){
         const data = await this.form001.findByPk(o_orderid);

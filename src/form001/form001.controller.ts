@@ -45,6 +45,11 @@ export class Form001Controller {
       return this.form001Service.getForm001Bysid(sid)
     }
 
+    @Get('findbyorder/:order_id')
+    async getForm001Byorder_id(@Param('order_id') order_id: number){
+      return this.form001Service.getForm001Byorder_id(order_id)
+    }
+
 
     @Delete(':order_id')
     async deletehistory(@Param('order_id') order_id : number){
