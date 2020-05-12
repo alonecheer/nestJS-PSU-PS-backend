@@ -25,7 +25,7 @@ export class Form001Service {
                 'o_committee5','o_committee6','o_gvm_sub',
                 'o_income','o_aml_income','o_direction',
                 'o_policy','o_works','o_task','o_expense_cg',
-                'o_sub_cg','o_list_n','o_other_m','order_id'
+                'o_sub_cg','o_list_n','o_other_m','order_id','createdAt',
             ],
             where: {
                 sid: sid
