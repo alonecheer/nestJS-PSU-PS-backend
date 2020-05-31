@@ -21,7 +21,7 @@ export class UsersService {
         if (!found) {
             return 0;
         }
-        return found;
+        return found
     }
 
     async getPasswordBysid(sid: string) {

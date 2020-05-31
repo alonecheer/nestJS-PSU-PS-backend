@@ -104,6 +104,9 @@ export class Form001 extends Model<Form001> {
     @Column
     o_other_m: number;
 
+    @Column
+    o_typedoc: number;
+
     @BelongsTo(()=> User)
     user:User;
 
@@ -111,5 +114,7 @@ export class Form001 extends Model<Form001> {
     @ForeignKey(() => User)
     @Column
     sid: string;
+
+    
    
 }

@@ -1,5 +1,6 @@
 import { Table, Column, Model, PrimaryKey,AutoIncrement,HasMany,ForeignKey ,HasOne } from 'sequelize-typescript';
 import { Form001 } from 'src/form001/entity/forms.entity';
+import { DataType } from 'sequelize/types';
 
 
 @Table({})

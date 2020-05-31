@@ -15,5 +15,5 @@ export class CreateUserDetailDto{
     firstname:string;
     lastname:string;
     cid:string;
-
+    
 }

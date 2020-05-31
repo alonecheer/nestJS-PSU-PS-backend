@@ -11,8 +11,8 @@ export class Form001Service {
         return await this.form001.findAll();
     }
 
-    async insertForm001(insertForm001:InsertFormDto){
-        return await this.form001.create(insertForm001);
+    async insertForm001(InsertFormDto:InsertFormDto){
+        return  await this.form001.create(InsertFormDto);
     }
 
     async getForm001Bysid(sid : string){
@@ -25,7 +25,7 @@ export class Form001Service {
                 'o_committee5','o_committee6','o_gvm_sub',
                 'o_income','o_aml_income','o_direction',
                 'o_policy','o_works','o_task','o_expense_cg',
-                'o_sub_cg','o_list_n','o_other_m','order_id','createdAt',
+                'o_sub_cg','o_list_n','o_other_m','order_id','createdAt', "o_typedoc"
             ],
             where: {
                 sid: sid
@@ -47,7 +47,7 @@ export class Form001Service {
                 'o_committee5','o_committee6','o_gvm_sub',
                 'o_income','o_aml_income','o_direction',
                 'o_policy','o_works','o_task','o_expense_cg',
-                'o_sub_cg','o_list_n','o_other_m','order_id','createdAt',
+                'o_sub_cg','o_list_n','o_other_m','order_id','createdAt', "o_typedoc"
             ],
             where: {
                 order_id: order_id
