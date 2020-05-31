@@ -22,4 +22,11 @@ export class TypeformService {
         return false;
     }
 
+    async updateTypedoc(o_typedoc: number, typeformDto: TypeformDto){
+        const data = await this.typeform.findByPk(o_typedoc);
+        if(data){
+            return await data.update(typeformDto);
+        }
+        return false;
+    }
 }
