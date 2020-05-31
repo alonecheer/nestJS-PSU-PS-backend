@@ -7,9 +7,10 @@ import {
     AutoIncrement,
     HasMany,
     ForeignKey,
-    BelongsTo
+    BelongsTo,
+    HasOne
 } from 'sequelize-typescript';
-
+import { Form001 } from 'src/form001/entity/forms.entity';
 @Table({
     timestamps: true,
     paranoid: true,
@@ -22,5 +23,7 @@ export class Typeform extends Model<Typeform> {
     @Column
     o_typedoc_name: string;
 
+    @HasOne(()=>Form001)
+    form001: Form001;
     
 }

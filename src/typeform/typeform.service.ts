@@ -29,4 +29,19 @@ export class TypeformService {
         }
         return false;
     }
+
+    async getvalueTypedoc(o_typedoc: number){
+        const data = await this.typeform.findAll({
+            attributes: [
+                 "o_typedoc_name"
+            ],
+            where: {
+                o_typedoc: o_typedoc
+            }
+        })
+        if (!data){
+            return 0;
+        }
+        return data[0].o_typedoc_name;
+    }
 }

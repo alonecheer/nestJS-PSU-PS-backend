@@ -10,6 +10,7 @@ import {
     BelongsTo
 } from 'sequelize-typescript';
 import { User } from 'src/users/entity/users.entity';
+import { Typeform } from 'src/typeform/entity/typeform.entity';
 
 @Table({
     timestamps: true,
@@ -104,9 +105,6 @@ export class Form001 extends Model<Form001> {
     @Column
     o_other_m: number;
 
-    @Column
-    o_typedoc: number;
-
     @BelongsTo(()=> User)
     user:User;
 
@@ -115,6 +113,11 @@ export class Form001 extends Model<Form001> {
     @Column
     sid: string;
 
+    @BelongsTo(()=> Typeform)
+    typeform: Typeform;
     
-   
+    @AllowNull(false)
+    @ForeignKey(() => Typeform)
+    @Column
+    o_typedoc: number;
 }

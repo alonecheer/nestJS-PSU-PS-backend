@@ -11,6 +11,11 @@ export class TypeformController {
         return await this.typeformService.getTypeform();
     }
 
+    @Get(':o_typedoc')
+    async getvalueTypedoc(@Param('o_typedoc') o_typedoc: number){
+        return this.typeformService.getvalueTypedoc(o_typedoc)
+    }
+
     @Post('/settype')
     async setTypeform(@Body() typeformDto: TypeformDto) {
         return await this.typeformService.setTypeform(typeformDto);
