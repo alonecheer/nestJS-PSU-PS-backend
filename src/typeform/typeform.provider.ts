@@ -1,8 +1,9 @@
 import { Typeform } from "./entity/typeform.entity";
 
+
 export const TypeformProviders = [
   {
-    provide: 'typefomrRepo',
+    provide: 'typeformRepo',
     useValue: Typeform,
   },
 ];

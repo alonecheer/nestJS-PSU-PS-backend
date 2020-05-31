@@ -9,11 +9,10 @@ import {
     ForeignKey,
     BelongsTo
 } from 'sequelize-typescript';
-import { User } from 'src/users/entity/users.entity';
 
 @Table({
-    timestamps: false,
-    paranoid: false,
+    timestamps: true,
+    paranoid: true,
 })
 export class Typeform extends Model<Typeform> {
     @PrimaryKey
