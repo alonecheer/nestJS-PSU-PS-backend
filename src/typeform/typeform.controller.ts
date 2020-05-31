@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete, Param } from '@nestjs/common';
 import { TypeformService } from './typeform.service';
 import { TypeformDto } from './dto/typeform.dto';
 
@@ -14,5 +14,10 @@ export class TypeformController {
     @Post('/settype')
     async setTypeform(@Body() typeformDto: TypeformDto) {
         return await this.typeformService.setTypeform(typeformDto);
+    }
+
+    @Delete(':o_typedoc')
+    async deletetypedoc(@Param('o_typedoc') o_typedoc: number){
+        return this.typeformService.deleteTypeform(o_typedoc);
     }
 }

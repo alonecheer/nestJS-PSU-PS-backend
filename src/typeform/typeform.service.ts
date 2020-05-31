@@ -13,4 +13,13 @@ export class TypeformService {
     async setTypeform(typeform: TypeformDto){
         return await this.typeform.create(typeform)
     }
+    
+    async deleteTypeform(o_typedoc: number){
+        const data = await this.typeform.findByPk(o_typedoc);
+        if(data){
+            return await data.destroy();
+        }
+        return false;
+    }
+
 }
