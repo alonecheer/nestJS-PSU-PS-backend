@@ -26,4 +26,5 @@ export class InsertFormDto{
     o_list_n: string;
     o_other_m: number;
     o_typedoc: number;
+    status: string;
 }
