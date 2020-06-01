@@ -23,11 +23,11 @@ export class TypeformController {
 
     @Delete(':o_typedoc')
     async deleteTypedoc(@Param('o_typedoc') o_typedoc: number){
-        return this.typeformService.deleteTypeform(o_typedoc);
+        return await this.typeformService.deleteTypeform(o_typedoc);
     }
 
     @Patch(':o_typedoc')
     async updateTypedoc(@Param('o_typedoc') o_typedoc: number ,@Body() typeformDto:TypeformDto){
-        return this.typeformService.updateTypedoc(o_typedoc,typeformDto);
+        return await this.typeformService.updateTypedoc(o_typedoc,typeformDto);
     }
 }

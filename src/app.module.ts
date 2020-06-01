@@ -6,12 +6,13 @@ import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { Form001Module } from './form001/form001.module';
 import { TypeformModule } from './typeform/typeform.module';
+import { StatusForm001Module } from './status-form001/status-form001.module';
 
 
 
 
 @Module({
-  imports: [UsersModule, DatabaseModule, AuthModule,Form001Module, TypeformModule],
+  imports: [UsersModule, DatabaseModule, AuthModule,Form001Module, TypeformModule, StatusForm001Module],
   controllers: [AppController,],
   providers: [AppService],
 })

@@ -7,7 +7,8 @@ import {
     AutoIncrement,
     HasMany,
     ForeignKey,
-    BelongsTo
+    BelongsTo,
+    Sequelize
 } from 'sequelize-typescript';
 import { User } from 'src/users/entity/users.entity';
 import { Typeform } from 'src/typeform/entity/typeform.entity';
@@ -105,6 +106,10 @@ export class Form001 extends Model<Form001> {
     @Column
     o_other_m: number;
 
+
+    @Column
+    status: string;
+
     @BelongsTo(()=> User)
     user:User;
 
@@ -120,4 +125,14 @@ export class Form001 extends Model<Form001> {
     @ForeignKey(() => Typeform)
     @Column
     o_typedoc: number;
+
+    @Column
+    get o_typedoc_name(): string {
+    return this.getDataValue('o_typedoc_name');
+  }
+ 
+  set o_typedoc_name(value: string) {
+    this.setDataValue('o_typedoc_name', value);
+  }
 }
+    
