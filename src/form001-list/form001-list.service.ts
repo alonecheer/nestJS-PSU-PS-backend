@@ -13,4 +13,15 @@ export class Form001ListService {
     async insertForm001_2(form001_ListDto: Form001_ListDto){
         return await this.form001_list.create(form001_ListDto)
     }
+    async getForm001_2Bysid(sid : string){
+        const found = await this.form001_list.findAll({
+            where: {
+                sid: sid
+            }
+        })
+        if (!found){
+            return 0;
+        }
+        return found;
+    }
 }
