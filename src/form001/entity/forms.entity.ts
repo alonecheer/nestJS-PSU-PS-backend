@@ -8,9 +8,11 @@ import {
     HasMany,
     ForeignKey,
     BelongsTo,
-    Sequelize
+    Sequelize,
+    HasOne
 } from 'sequelize-typescript';
 import { User } from 'src/users/entity/users.entity';
+import { Form001_List } from 'src/form001-list/entity/form001-list.entity';
 import { Typeform } from 'src/typeform/entity/typeform.entity';
 
 @Table({
@@ -134,5 +136,8 @@ export class Form001 extends Model<Form001> {
   set o_typedoc_name(value: string) {
     this.setDataValue('o_typedoc_name', value);
   }
+
+  @HasOne(()=>Form001_List)
+  form001_2: Form001_List;
 }
     
