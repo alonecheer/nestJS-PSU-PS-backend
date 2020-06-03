@@ -13,7 +13,6 @@ export class Form001ListController {
 
     @Post('/insert')
     async insertForm001_2(@Body() form001_ListDto: Form001_ListDto){
-        console.log(form001_ListDto)
         return this.form001_2Service.insertForm001_2(form001_ListDto)
     }
 }
