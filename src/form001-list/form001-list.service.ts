@@ -24,4 +24,15 @@ export class Form001ListService {
         }
         return found;
     }
+    async getForm001_2Byorder_id(order_id : number){
+        const found = await this.form001_list.findAll({
+            where: {
+                order_id: order_id
+            }
+        })
+        if (!found){
+            return 0;
+        }
+        return found;
+    }
 }

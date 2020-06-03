@@ -15,9 +15,13 @@ export class Form001ListController {
     async getForm001_2Bysid(@Param('sid') sid : string){
         return this.form001_2Service.getForm001_2Bysid(sid);
     }
-
+    @Get('/:order_id')
+    async getForm001_2Byorder_id(@Param('order_id') order_id: number){
+        return this.form001_2Service.getForm001_2Byorder_id(order_id);
+    }
     @Post('/insert')
     async insertForm001_2(@Body() form001_ListDto: Form001_ListDto){
         return this.form001_2Service.insertForm001_2(form001_ListDto)
     }
+
 }
