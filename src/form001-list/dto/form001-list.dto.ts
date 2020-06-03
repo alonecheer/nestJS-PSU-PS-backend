@@ -14,4 +14,6 @@ export class Form001_ListDto {
     l_priceunit: number;
 
     sid: string;
+
+    order_id: number
 }
