@@ -1,4 +1,4 @@
-import { Controller, Post, UseInterceptors, UploadedFiles, Get, Res, Param } from '@nestjs/common';
+import { Controller, Post, UseInterceptors, UploadedFiles, Get, Res, Param, UploadedFile } from '@nestjs/common';
 import { Uploadfile001Service } from './uploadfile001.service';
 import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { createWriteStream } from 'fs';
@@ -8,7 +8,7 @@ import { editFileName, imageFileFilter } from '../uploadfile001/utils/file-uploa
 export class Uploadfile001Controller {
     constructor(private readonly uploadfile001Service : Uploadfile001Service){}
 
-    @Post()
+    @Post('single')
     @UseInterceptors(
       FileInterceptor('image', {
         storage: diskStorage({
@@ -17,8 +17,10 @@ export class Uploadfile001Controller {
         }),
         fileFilter: imageFileFilter,
       }),
+      
     )
-    async uploadedFile(@UploadedFiles() file) {
+    async uploadedFile(@UploadedFile() file) {
+      console.log(file);
       const response = {
         originalname: file.originalname, 
         filename: file.filename,
@@ -36,9 +38,10 @@ export class Uploadfile001Controller {
         fileFilter: imageFileFilter,
       }),
     )
-    async uploadMultipleFiles(@UploadedFiles() files) {
+    async uploadMultipleFiles(@UploadedFiles() file) {
+      console.log(file);
       const response = [];
-      files.forEach(file => {
+      file.forEach(file => {
         const fileReponse = {
           originalname: file.originalname,
           filename: file.filename,
