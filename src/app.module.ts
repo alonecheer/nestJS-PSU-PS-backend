@@ -8,12 +8,13 @@ import { Form001Module } from './form001/form001.module';
 import { TypeformModule } from './typeform/typeform.module';
 import { StatusForm001Module } from './status-form001/status-form001.module';
 import { Form001ListModule } from './form001-list/form001-list.module';
+import { Uploadfile001Module } from './uploadfile001/uploadfile001.module';
 
 
 
 
 @Module({
-  imports: [UsersModule, DatabaseModule, AuthModule,Form001Module, TypeformModule, StatusForm001Module, Form001ListModule],
+  imports: [UsersModule, DatabaseModule, AuthModule,Form001Module, TypeformModule, StatusForm001Module, Form001ListModule, Uploadfile001Module],
   controllers: [AppController,],
   providers: [AppService],
 })
