@@ -7,12 +7,27 @@ export const imageFileFilter = (req, file, callback) => {
   callback(null, true);
 };
 
+function getFormattedTime() {
+  var today = new Date();
+  var y = today.getFullYear();
+  // JavaScript months are 0-based.
+  var m = today.getMonth() + 1;
+  var d = today.getDate();
+  var h = today.getHours();
+  var mi = today.getMinutes();
+  var s = today.getSeconds();
+  return `${y}${m}${d}-${h}${mi}${s}`;
+}
+
 export const editFileName = (req, file, callback) => {
+
+
   const name = file.originalname.split('.')[0];
   const fileExtName = extname(file.originalname);
+  console.log('fileExtName = ',fileExtName)
   const randomName = Array(4)
     .fill(null)
     .map(() => Math.round(Math.random() * 16).toString(16))
     .join('');
-  callback(null, `${name}-${randomName}${fileExtName}`);
+  callback(null, `${name}-${getFormattedTime()}${fileExtName}`);
 };

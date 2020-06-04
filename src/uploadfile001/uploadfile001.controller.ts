@@ -30,7 +30,7 @@ export class Uploadfile001Controller {
   
     @Post('multiple')
     @UseInterceptors(
-      FilesInterceptor('image', 20, {
+      FilesInterceptor('image', 2, {
         storage: diskStorage({
           destination: './files',
           filename: editFileName,
