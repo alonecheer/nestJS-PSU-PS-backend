@@ -4,7 +4,7 @@ import { Uploadfile001Service } from './uploadfile001.service';
 import { FileInterceptor, MulterModule } from '@nestjs/platform-express'
 @Module({
   imports:[MulterModule.register({
-    dest: './uploads'
+    dest: './files'
   })],
   controllers: [Uploadfile001Controller],
   providers: [Uploadfile001Service]
