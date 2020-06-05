@@ -140,7 +140,7 @@ export class Form001 extends Model<Form001> {
   @HasOne(()=>Form001_List)
   form001_2: Form001_List;
   
-  @HasOne( () => Uploadfile001)
+  @HasOne(()=>Uploadfile001)
   uploadfile : Uploadfile001;
 }
     

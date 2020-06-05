@@ -21,13 +21,36 @@ export class Uploadfile001 extends Model<Uploadfile001>{
     @Column
     f_id: number;
 
+    // @Column
+    // f_name: string;
+
     @Column
-    f_name: string;
+    fieldname: string;
+
+    @Column
+    originalname: string;
+
+    @Column
+    encoding: string;
+
+    @Column
+    mimetype: string;
+
+    @Column
+    destination: string;
+
+    @Column
+    filename: string
+
+    @Column
+    path: string
+
+    @Column
+    size: number;
 
     @BelongsTo(()=> Form001)
     form001: Form001;
 
-    @AllowNull(false)
     @ForeignKey(() => Form001)
     @Column
     order_id: number
