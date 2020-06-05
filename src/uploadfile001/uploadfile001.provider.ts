@@ -1,7 +1,7 @@
 import { Uploadfile001 } from "./entity/uploadfile001.entity";
 
 
-export const TypeformProviders = [
+export const Uploadfile001Providers = [
   {
     provide: 'uploadfile001Repo',
     useValue: Uploadfile001,
