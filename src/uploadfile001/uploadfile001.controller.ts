@@ -1,4 +1,4 @@
-import { Controller, Post, UseInterceptors, UploadedFiles, Get, Res, Param, UploadedFile } from '@nestjs/common';
+import { Controller, Post, UseInterceptors, UploadedFiles, Get, Res, Param, UploadedFile, Body } from '@nestjs/common';
 import { Uploadfile001Service } from './uploadfile001.service';
 import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { createWriteStream } from 'fs';
@@ -38,7 +38,8 @@ export class Uploadfile001Controller {
         fileFilter: imageFileFilter,
       }),
     )
-    async uploadMultipleFiles(@UploadedFiles() file) {
+    async uploadMultipleFiles(@UploadedFiles() file,@Body() order_id : number) {
+      //const data = this.uploadfile001Service.
       console.log(file);
       const response = [];
       file.forEach(file => {

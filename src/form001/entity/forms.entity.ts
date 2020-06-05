@@ -14,7 +14,7 @@ import {
 import { User } from 'src/users/entity/users.entity';
 import { Form001_List } from 'src/form001-list/entity/form001-list.entity';
 import { Typeform } from 'src/typeform/entity/typeform.entity';
-
+import {  Uploadfile001 } from 'src/uploadfile001/entity/uploadfile001.entity';
 @Table({
     timestamps: true,
     paranoid: true,
@@ -139,5 +139,8 @@ export class Form001 extends Model<Form001> {
 
   @HasOne(()=>Form001_List)
   form001_2: Form001_List;
+  
+  @HasOne( () => Uploadfile001)
+  uploadfile : Uploadfile001;
 }
     
