@@ -32,7 +32,7 @@ export class Uploadfile001Controller {
   
     @Post('multiple')
     @UseInterceptors(
-      FilesInterceptor('image', 2, {
+      FilesInterceptor('image', 1, {
         storage: diskStorage({
           destination: './files',
           filename: editFileName,
@@ -80,6 +80,7 @@ export class Uploadfile001Controller {
 
     @Patch('find/:originalname')
     insertorder_id(@Param('originalname') originalnames : string ,@Body() order_id : any){
+      console.log('order id = ',order_id)
       return this.uploadfile001Service.insertorder_id(originalnames,order_id)
     }
 }
