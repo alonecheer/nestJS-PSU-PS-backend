@@ -79,7 +79,7 @@ export class Uploadfile001Controller {
     // }
 
     @Patch('find/:originalname')
-    insertorder_id(@Param('originalname') originalname : string ,@Body() order_id : number){
-      return this.uploadfile001Service.insertorder_id(originalname,order_id)
+    insertorder_id(@Param('originalname') originalnames : string ,@Body() order_id : any){
+      return this.uploadfile001Service.insertorder_id(originalnames,order_id)
     }
 }

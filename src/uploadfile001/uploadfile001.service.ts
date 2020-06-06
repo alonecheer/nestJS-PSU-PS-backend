@@ -46,16 +46,17 @@ export class Uploadfile001Service {
         return found
     }
 
-    async insertorder_id (originalname : string , order_id : number){
+    async insertorder_id (originalnames : string , order_id : any){
         console.log('order_id = ', order_id)
         const found = await this.uploadfile001.findAll({
             where: {
-                originalname : originalname
+                originalname : originalnames
             }
         })
         if(!found){
             return 'ไม่พบ'
         }
-        return typeof found
+        //found.find(item => item.originalname == originalnames).order_id = order_ids
+        return found[0].update(order_id)
     }
 }
