@@ -7,27 +7,54 @@ import { response } from 'express';
 export class Uploadfile001Service {
     constructor(@Inject('uploadfile001Repo') private readonly uploadfile001 : typeof Uploadfile001 ){}
 
-    async uploadfile(file: any){
-        return  await this.uploadfile001.create(file)
+    async uploadfile(data: any){
+        return  await this.uploadfile001.create(data)
     }
 
-    async insertOrder_id (){
-        return await this.uploadfile001.create()
-    }
+    // async insertOrder_id (order_id: number,originalname: string ){
+    //     console.log(originalname)
+    //     console.log(order_id)
+    //     const found = await this.uploadfile001.findAll({
+    //         // attributes: [
+    //         //     'originalname'
+    //         // ],
+    //         where: {
+    //             originalname: originalname
+    //         }
+    //     })
+    //     if(found[0]){
+    //         return await found[0].update(order_id)
+    //     }
+        
+    // }
 
     async findByfilename (filename: string){
-        console.log(filename)
         const found = await this.uploadfile001.findAll({
             attributes: [
-                'originalname'
+                'order_id'
             ],
             where: {
-                filename: filename
+                originalname: filename
             }
         })
-        if (!found){
-            return 0;
+        if (!found ){
+            return console.log('ssss')
         }
-        return found;
+       var order = {
+           order_id: 1
+       }
+        return found
+    }
+
+    async insertorder_id (originalname : string , order_id : number){
+        const found = await this.uploadfile001.findAll({
+            where: {
+                originalname : originalname
+            }
+        })
+        if(!found){
+            return 'ไม่พบ'
+        }
+        return 'พบข้อมุลพร้อมแก้ไข'
     }
 }

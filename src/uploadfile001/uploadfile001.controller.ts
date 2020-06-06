@@ -1,4 +1,4 @@
-import { Controller, Post, UseInterceptors, UploadedFiles, Get, Res, Param, UploadedFile, Body } from '@nestjs/common';
+import { Controller, Post, UseInterceptors, UploadedFiles, Get, Res, Param, UploadedFile, Body, Patch } from '@nestjs/common';
 import { Uploadfile001Service } from './uploadfile001.service';
 import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { createWriteStream } from 'fs';
@@ -62,8 +62,24 @@ export class Uploadfile001Controller {
 
     @Get('find/:filename')
     findByfilename(@Param('filename') filename){
-      console.log(filename)
       return this.uploadfile001Service.findByfilename(filename)
     }
     
+    // @Patch('find/:filename')
+    // async insertOrder_id(@Param('filename') originalname ,@Body()  order_id: number ){
+    //   const upload = await this.uploadfile001Service.insertOrder_id(order_id,originalname);
+    //   if(!upload){
+    //     return 0
+    //   }
+    //   else{
+    //     return 'พบข้อมูล'
+    //   }
+    //   let response = {};
+    //   return response
+    // }
+
+    @Patch('find/:originalname')
+    insertorder_id(@Param('originalname') originalname : string , order_id : number){
+      return this.uploadfile001Service.insertorder_id(originalname,order_id)
+    }
 }

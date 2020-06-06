@@ -141,6 +141,6 @@ export class Form001 extends Model<Form001> {
   form001_2: Form001_List;
   
   @HasOne(()=>Uploadfile001)
-  uploadfile : Uploadfile001;
+  order_ids : number;
+
 }
-    

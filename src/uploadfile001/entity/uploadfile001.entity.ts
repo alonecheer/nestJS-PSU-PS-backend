@@ -8,7 +8,8 @@ import {
     HasMany,
     ForeignKey,
     BelongsTo,
-    HasOne
+    HasOne,
+    BelongsToMany
 } from 'sequelize-typescript';
 import { Form001 } from 'src/form001/entity/forms.entity'
 @Table({
@@ -48,10 +49,10 @@ export class Uploadfile001 extends Model<Uploadfile001>{
     @Column
     size: number;
 
-    @BelongsTo(()=> Form001)
-    form001: Form001;
-
     @ForeignKey(() => Form001)
     @Column
-    order_id: number
+    order_id: number 
+    
+    @BelongsTo(()=> Form001)
+    form001: Form001;
 }
