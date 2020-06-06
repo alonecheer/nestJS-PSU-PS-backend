@@ -47,6 +47,7 @@ export class Uploadfile001Service {
     }
 
     async insertorder_id (originalname : string , order_id : number){
+        console.log('order_id = ', order_id)
         const found = await this.uploadfile001.findAll({
             where: {
                 originalname : originalname
@@ -55,6 +56,6 @@ export class Uploadfile001Service {
         if(!found){
             return 'ไม่พบ'
         }
-        return 'พบข้อมุลพร้อมแก้ไข'
+        return typeof found
     }
 }
