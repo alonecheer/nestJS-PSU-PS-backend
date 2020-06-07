@@ -30,8 +30,8 @@ export class Form001ListService {
                 order_id: order_id
             }
         })
-        if (!found){
-            return 0;
+        if (found[0] == null){
+            return 'ไม่พบข้อมูล'
         }
         return found;
     }

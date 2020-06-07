@@ -15,7 +15,7 @@ export class Form001ListController {
     async getForm001_2Bysid(@Param('sid') sid : string){
         return this.form001_2Service.getForm001_2Bysid(sid);
     }
-    @Get('/:order_id')
+    @Get('byorder_id/:order_id')
     async getForm001_2Byorder_id(@Param('order_id') order_id: number){
         return this.form001_2Service.getForm001_2Byorder_id(order_id);
     }
