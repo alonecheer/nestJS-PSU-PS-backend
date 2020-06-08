@@ -11,7 +11,7 @@ import {
     HasOne,
     BelongsToMany
 } from 'sequelize-typescript';
-import { Form001 } from 'src/form001/entity/forms.entity'
+import { User } from 'src/users/entity/users.entity'
 @Table({
     timestamps: true,
     paranoid: true,
@@ -25,4 +25,7 @@ export class User_type extends Model<User_type>{
 
     @Column
     type_title: string
+
+    @HasMany( type => User)
+    user: User
 }

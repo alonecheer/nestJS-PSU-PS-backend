@@ -1,7 +1,7 @@
 import { Table, Column, Model, PrimaryKey,AutoIncrement,HasMany,ForeignKey ,HasOne } from 'sequelize-typescript';
 import { Form001 } from 'src/form001/entity/forms.entity';
 import { Form001_List } from 'src/form001-list/entity/form001-list.entity';
-
+import { User_type } from 'src/user-type/entity/user-type.entity'
 @Table({})
 export class User extends Model<User> {
 
@@ -27,5 +27,7 @@ export class User extends Model<User> {
   @HasOne(()=>Form001_List)
   form001_2: Form001_List;
   
+  @ForeignKey(type => User_type )
+  type_id: User_type[];
 }
 
