@@ -9,12 +9,13 @@ import { TypeformModule } from './typeform/typeform.module';
 import { StatusForm001Module } from './status-form001/status-form001.module';
 import { Form001ListModule } from './form001-list/form001-list.module';
 import { Uploadfile001Module } from './uploadfile001/uploadfile001.module';
+import { UserTypeModule } from './user-type/user-type.module';
 
 
 
 
 @Module({
-  imports: [UsersModule, DatabaseModule, AuthModule,Form001Module, TypeformModule, StatusForm001Module, Form001ListModule, Uploadfile001Module],
+  imports: [UsersModule, DatabaseModule, AuthModule,Form001Module, TypeformModule, StatusForm001Module, Form001ListModule, Uploadfile001Module, UserTypeModule],
   controllers: [AppController,],
   providers: [AppService],
 })
