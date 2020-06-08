@@ -110,7 +110,7 @@ export class Form001 extends Model<Form001> {
     o_other_m: number;
 
     @ForeignKey( type =>Status_form001)
-    status: Status_form001[]
+    s_id: Status_form001[]
 
     @BelongsTo(()=> User)
     user:User;

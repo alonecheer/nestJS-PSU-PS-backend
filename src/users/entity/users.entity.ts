@@ -24,8 +24,8 @@ export class User extends Model<User> {
   @HasOne(()=>Form001)
   form001: Form001;
 
-  @HasOne(()=>Form001_List)
-  form001_2: Form001_List;
+  // @HasOne(()=>Form001_List)
+  // form001_2: Form001_List;
   
   @ForeignKey(type => User_type )
   type_id: User_type[];

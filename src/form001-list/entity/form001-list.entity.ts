@@ -76,14 +76,14 @@ export class Form001_List extends Model<Form001_List>{
     l_priceunit_4: number;
 
     // -------------------------
+    // --- optional-----
+    // @BelongsTo(()=> User)
+    // user:User;
 
-    @BelongsTo(()=> User)
-    user:User;
-
-    @AllowNull(false)
-    @ForeignKey(() => User)
-    @Column
-    sid: string;
+    // @AllowNull(false)
+    // @ForeignKey(() => User)
+    // @Column
+    // sid: string;
 
     @BelongsTo(()=> Form001)
     form001: Form001;
