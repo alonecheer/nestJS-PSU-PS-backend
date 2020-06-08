@@ -15,7 +15,7 @@ import { User } from 'src/users/entity/users.entity';
 import { Form001_List } from 'src/form001-list/entity/form001-list.entity';
 import { Typeform } from 'src/typeform/entity/typeform.entity';
 import {  Uploadfile001 } from 'src/uploadfile001/entity/uploadfile001.entity';
-
+import { Status_form001 } from 'src/status-form001/entity/status-form001.entity'
 @Table({
     timestamps: true,
     paranoid: true,
@@ -109,9 +109,8 @@ export class Form001 extends Model<Form001> {
     @Column
     o_other_m: number;
 
-
-    @Column
-    status: string;
+    @ForeignKey( type =>Status_form001)
+    status: Status_form001[]
 
     @BelongsTo(()=> User)
     user:User;
@@ -143,7 +142,5 @@ export class Form001 extends Model<Form001> {
   
   @HasOne(()=>Uploadfile001)
   order_ids : number;
-
-
 
 }
