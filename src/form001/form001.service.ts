@@ -1,6 +1,7 @@
 import { Injectable,Inject } from '@nestjs/common';
 import { Form001 } from './entity/forms.entity';
 import { InsertFormDto } from './dto/forms.dto';
+import { Typeform } from 'src/typeform/entity/typeform.entity';
 
 
 @Injectable()
@@ -51,7 +52,13 @@ export class Form001Service {
             ],
             where: {
                 order_id: order_id
-            }
+            },
+            include: [
+                {
+                  model: Typeform,
+                  required: true      // true is similar to an INNER JOIN and false a LEFT JOIN
+                }
+              ]
         })
         //console.log('found = xxxxxxxxxxxxxx',found)
         if (!found){
