@@ -2,7 +2,7 @@ import { Injectable,Inject } from '@nestjs/common';
 import { Form001 } from './entity/forms.entity';
 import { InsertFormDto } from './dto/forms.dto';
 import { Typeform } from 'src/typeform/entity/typeform.entity';
-
+import { Status_form001 } from 'src/status-form001/entity/status-form001.entity'
 
 @Injectable()
 export class Form001Service {
@@ -56,15 +56,28 @@ export class Form001Service {
             include: [
                 {
                   model: Typeform,
-                  required: true      // true is similar to an INNER JOIN and false a LEFT JOIN
-                }
-              ]
+                  required: true,      // true is similar to an INNER JOIN and false a LEFT JOIN
+                
+                },
+            ],
+
         })
-        //console.log('found = xxxxxxxxxxxxxx',found)
+        const result = await this.form001.findAll({
+            where: {
+                order_id: order_id
+            },
+            include: [
+                {
+                  model: Status_form001,
+                  required: true,      // true is similar to an INNER JOIN and false a LEFT JOIN
+                
+                },
+            ],
+        })
         if (!found){
             return 0;
         }
-        return found;
+        return result;
     }
 
     async deletehistory(o_orderid: number){

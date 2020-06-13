@@ -109,8 +109,14 @@ export class Form001 extends Model<Form001> {
     @Column
     o_other_m: number;
 
-    @ForeignKey( type =>Status_form001)
-    s_id: Status_form001[]
+
+    // @BelongsTo(()=> Status_form001)
+    // status_id: Status_form001;
+
+    // @AllowNull(false)
+    // @ForeignKey( () =>Status_form001)
+    // @Column
+    // s_id: Status_form001
 
     @BelongsTo(()=> User)
     user:User;
@@ -128,19 +134,19 @@ export class Form001 extends Model<Form001> {
     @Column
     o_typedoc: number;
 
-    @Column
-    get o_typedoc_name(): string {
-    return this.getDataValue('o_typedoc_name');
-  }
- 
-  set o_typedoc_name(value: string) {
-    this.setDataValue('o_typedoc_name', value);
-  }
-
-  @HasOne(()=>Form001_List)
-  form001_2: Form001_List;
+    @HasOne(()=>Form001_List)
+    form001_2: Form001_List;
   
-  @HasOne(()=>Uploadfile001)
-  order_ids : number;
+    @HasOne(()=>Uploadfile001)
+    order_ids : number;
+
+    // Relation status_id
+
+    @ForeignKey(() => Status_form001)
+    @Column
+    s_id: number;
+   
+    @BelongsTo(() => Status_form001)
+    status_id: Status_form001;
 
 }

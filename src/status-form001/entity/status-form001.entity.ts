@@ -8,7 +8,8 @@ import {
     HasMany,
     ForeignKey,
     BelongsTo,
-    Sequelize
+    Sequelize,
+    HasOne
 } from 'sequelize-typescript';
 
 import { Form001 } from 'src/form001/entity/forms.entity'
@@ -28,7 +29,12 @@ export class Status_form001 extends Model<Status_form001> {
     @Column
     s_detail_en: string;
 
-    @HasMany( type => Form001 )
-    form001: Form001
+//     @HasOne( () => Form001 )
+//     form001: Form001
+// 
+
+    // form001
+    @HasMany(() => Form001)
+    players: Form001[];
 }
     
