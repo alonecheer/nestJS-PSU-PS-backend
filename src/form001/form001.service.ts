@@ -30,7 +30,13 @@ export class Form001Service {
             ],
             where: {
                 sid: sid
-            }
+            },
+            include: [
+                {
+                  model: Typeform,
+                  required: true,      // true is similar to an INNER JOIN and false a LEFT JOIN
+                },
+            ],       
         })
         //console.log('found = xxxxxxxxxxxxxx',found)
         if (!found){
@@ -57,10 +63,8 @@ export class Form001Service {
                 {
                   model: Typeform,
                   required: true,      // true is similar to an INNER JOIN and false a LEFT JOIN
-                
                 },
-            ],
-
+            ],       
         })
         const result = await this.form001.findAll({
             where: {
@@ -77,7 +81,7 @@ export class Form001Service {
         if (!found){
             return 0;
         }
-        return result;
+        return found;
     }
 
     async deletehistory(o_orderid: number){
