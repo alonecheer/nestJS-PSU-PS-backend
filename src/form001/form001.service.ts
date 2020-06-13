@@ -32,13 +32,9 @@ export class Form001Service {
                 sid: sid
             },
             include: [
-                {
-                  model: Typeform,
-                  required: true,      // true is similar to an INNER JOIN and false a LEFT JOIN
-                },
-            ],       
+                Typeform,Status_form001
+            ],             
         })
-        //console.log('found = xxxxxxxxxxxxxx',found)
         if (!found){
             return 0;
         }
@@ -60,10 +56,8 @@ export class Form001Service {
                 order_id: order_id
             },
             include: [
-                {
-                  model: Typeform,
-                  required: true,      // true is similar to an INNER JOIN and false a LEFT JOIN
-                },
+                  Typeform,Status_form001
+                 // required: true,      // true is similar to an INNER JOIN and false a LEFT JOIN
             ],       
         })
         const result = await this.form001.findAll({
