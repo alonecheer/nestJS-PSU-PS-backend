@@ -23,7 +23,8 @@ export class Typeform extends Model<Typeform> {
     @Column
     o_typedoc_name: string;
 
+    // !------------------------ Relation to Table Form001 ------------------------! //
     @HasOne(()=>Form001)
     form001: Form001;
-    
+    // !------------------------ end ------------------------! //
 }

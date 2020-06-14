@@ -49,10 +49,12 @@ export class Uploadfile001 extends Model<Uploadfile001>{
     @Column
     size: number;
 
+    // !------------------------ Relation to Table Form001 ------------------------! //
     @ForeignKey(() => Form001)
     @Column
     order_id: number 
     
     @BelongsTo(()=> Form001)
     form001: Form001;
+    // !------------------------ end ------------------------! //
 }

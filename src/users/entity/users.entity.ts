@@ -21,13 +21,15 @@ export class User extends Model<User> {
   @Column
   cid: string;
 
+  // !------------------------ Relation to Table Form001 ------------------------! //
   @HasOne(()=>Form001)
   form001: Form001;
+  // !------------------------ end ------------------------! //
 
-  // @HasOne(()=>Form001_List)
-  // form001_2: Form001_List;
-  
+  // !------------------------ Relation to Table User_type ------------------------! //
+  // !------------------------ type_id เป็น foreignKey ------------------------! //
   @ForeignKey(type => User_type )
   type_id: User_type[];
+  // !------------------------ end ------------------------! //
 }
 

@@ -29,12 +29,9 @@ export class Status_form001 extends Model<Status_form001> {
     @Column
     s_detail_en: string;
 
-//     @HasOne( () => Form001 )
-//     form001: Form001
-// 
-
-    // form001
+    // !------------------------ Relation to Table Form001 ------------------------! //
     @HasMany(() => Form001)
     players: Form001[];
+    // !------------------------ end ------------------------! //
 }
     
