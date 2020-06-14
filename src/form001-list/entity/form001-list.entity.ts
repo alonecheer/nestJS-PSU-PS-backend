@@ -22,6 +22,7 @@ export class Form001_List extends Model<Form001_List>{
     @Column
     l_id: number
     
+    // !------------------------ info 1  ------------------------! //
     @Column
     l_detail_1: string;
 
@@ -33,8 +34,9 @@ export class Form001_List extends Model<Form001_List>{
 
     @Column
     l_priceunit_1: number;
+    // !------------------------ End 1  ------------------------! //
 
-    // -------------------------
+    // !------------------------ info 2  ------------------------! //
     @Column
     l_detail_2: string;
 
@@ -46,9 +48,9 @@ export class Form001_List extends Model<Form001_List>{
 
     @Column
     l_priceunit_2: number;
+    // !------------------------ end 2  ------------------------! //
 
-    // -------------------------
-    // -------------------------
+    // !------------------------ info 3  ------------------------! //
     @Column
     l_detail_3: string;
 
@@ -60,9 +62,9 @@ export class Form001_List extends Model<Form001_List>{
 
     @Column
     l_priceunit_3: number;
+    // !------------------------ end 3  ------------------------! //
 
-    // -------------------------
-    // -------------------------
+    // !------------------------ info 4  ------------------------! //
     @Column
     l_detail_4: string;
 
@@ -74,17 +76,9 @@ export class Form001_List extends Model<Form001_List>{
 
     @Column
     l_priceunit_4: number;
+    // !------------------------ end 4  ------------------------! //
 
-    // -------------------------
-    // --- optional-----
-    // @BelongsTo(()=> User)
-    // user:User;
-
-    // @AllowNull(false)
-    // @ForeignKey(() => User)
-    // @Column
-    // sid: string;
-
+    // !------------------------ Relation to Table Form001 ------------------------! //
     @BelongsTo(()=> Form001)
     form001: Form001;
 
@@ -92,4 +86,5 @@ export class Form001_List extends Model<Form001_List>{
     @ForeignKey(() => Form001)
     @Column
     order_id: number
+    // !------------------------- end ------------------------! //
 }
