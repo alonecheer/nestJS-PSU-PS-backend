@@ -21,6 +21,8 @@ import { Status_form001 } from 'src/status-form001/entity/status-form001.entity'
     paranoid: true,
 })
 export class Form001 extends Model<Form001> {
+
+    // !------------------------ Form001 ------------------------! //
     @PrimaryKey
     @AutoIncrement
     @Column
@@ -109,14 +111,9 @@ export class Form001 extends Model<Form001> {
     @Column
     o_other_m: number;
 
+    // !------------------------ End ------------------------! //
 
-    // @BelongsTo(()=> Status_form001)
-    // status_id: Status_form001;
-
-    // @AllowNull(false)
-    // @ForeignKey( () =>Status_form001)
-    // @Column
-    // s_id: Status_form001
+    // !------------------------ Relation to Table User ------------------------! //
 
     @BelongsTo(()=> User)
     user:User;
@@ -126,27 +123,36 @@ export class Form001 extends Model<Form001> {
     @Column
     sid: string;
 
-    @BelongsTo(()=> Typeform)
-    typeform: Typeform;
-    
+    // !------------------------ End ------------------------! //
+
+    // !------------------------ Relation to Table Typeform ------------------------! //
+
     @AllowNull(false)
     @ForeignKey(() => Typeform)
     @Column
     o_typedoc: number;
+    
+    @BelongsTo(()=> Typeform)
+    typeform: Typeform;
+    
+    // !------------------------ End ------------------------! //
 
+    // !------------------------ Relation to Table Form001_List ------------------------! //
     @HasOne(()=>Form001_List)
     form001_2: Form001_List;
-  
+    // !------------------------ End  ------------------------! //
+
+    // !------------------------ Relation to Table Uploadfile001 ------------------------! //
     @HasOne(()=>Uploadfile001)
     order_ids : number;
+    // !------------------------ End  ------------------------! //
 
-    // Relation status_id
-
+    // !------------------------ Relation to Table Status_form001 ------------------------! //
     @ForeignKey(() => Status_form001)
     @Column
     s_id: number;
    
     @BelongsTo(() => Status_form001)
     status_id: Status_form001;
-
+    // !------------------------ End  ------------------------! //
 }
