@@ -1,4 +1,4 @@
-import { Table, Column, Model, PrimaryKey,AutoIncrement,HasMany,ForeignKey ,HasOne } from 'sequelize-typescript';
+import { Table, Column, Model,BelongsTo, PrimaryKey,AutoIncrement,HasMany,ForeignKey ,HasOne } from 'sequelize-typescript';
 import { Form001 } from 'src/form001/entity/forms.entity';
 import { Form001_List } from 'src/form001-list/entity/form001-list.entity';
 import { User_type } from 'src/user-type/entity/user-type.entity'
@@ -28,8 +28,11 @@ export class User extends Model<User> {
 
   // !------------------------ Relation to Table User_type ------------------------! //
   // !------------------------ type_id เป็น foreignKey ------------------------! //
-  @ForeignKey(type => User_type )
-  type_id: User_type[];
+
+  @ForeignKey(() => User_type )
+  type_id: number;
+  @BelongsTo(()=> User_type)
+    typeform: User_type;
   // !------------------------ end ------------------------! //
 }
 

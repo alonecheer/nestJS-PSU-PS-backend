@@ -19,12 +19,13 @@ export class UsersService {
     
     async checktype(sid: string){
         const found = await this.user.findAll({
-            where:{
-                sid: sid
-            },
             attributes:[
                 "sid","type_id","firstname","lastname","cid",
             ],
+            where:{
+                sid: sid
+            },
+            
             include: [
                 User_type
             ]

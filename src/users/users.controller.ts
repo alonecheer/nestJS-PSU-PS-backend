@@ -26,4 +26,9 @@ export class UsersController {
     signIn(@Body() CreateUserDto:CreateUserDto) {
         return this.usersService.siginIn(CreateUserDto);
     }
+
+    @Get('/checktype/:sid')
+    checktype(@Param('sid') sid: string){
+        return this.usersService.checktype(sid);
+    }
 }

@@ -27,7 +27,7 @@ export class User_type extends Model<User_type>{
     type_title: string
 
     // !------------------------ Relation to Table User ------------------------! //
-    @HasMany( type => User)
-    user: User
+    @HasOne( () => User)
+    user: User;
     // !------------------------ end ------------------------! //
 }
