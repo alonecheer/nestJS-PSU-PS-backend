@@ -3,6 +3,7 @@ import { User } from './entity/users.entity';
 import { CreateUserDto, CreateUserDetailDto } from './dto/create-user.dto';
 import * as soap from 'soap';
 import * as bcrypt from 'bcrypt';
+import { User_type } from 'src/user-type/entity/user-type.entity';
 var sha256 = require('sha256')
 
 @Injectable()
@@ -14,6 +15,24 @@ export class UsersService {
     async findAll(): Promise<User[]> {
         const user = await this.user.findAll<User>();
         return user;
+    }
+    
+    async checktype(sid: string){
+        const found = await this.user.findAll({
+            where:{
+                sid: sid
+            },
+            attributes:[
+                "sid","type_id","firstname","lastname","cid",
+            ],
+            include: [
+                User_type
+            ]
+        })
+        if (!found){
+            return 'ไม่พบข้อมูล';
+        }
+        return found;
     }
 
     async getUserBySid(sid: string) {
